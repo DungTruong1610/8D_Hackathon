@@ -1,0 +1,84 @@
+{
+  "xsappname": "cnma_proresolve",
+  "tenant-mode": "dedicated",
+  "description": "Security configuration for CNMA Proresolve Application",
+
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.cfapps.*.hana.ondemand.com/**",
+      "https://*.applicationstudio.cloud.sap/**",
+      "http://localhost:4004/**",
+      "http://localhost:5000/**",
+      "http://localhost:5173/**"
+    ],
+    "credential-types": ["binding-secret", "x509"]
+  },
+
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.admin",
+      "description": "Identity Admin Scope"
+    },
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin Scope"
+    },
+    {
+      "name": "$XSAPPNAME.User",
+      "description": "Standard User Scope"
+    },
+    {
+      "name": "$XSAPPNAME.Auditor",
+      "description": "Auditor Scope for read-only access to task completion evidence"
+    }
+  ],
+
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Admin Role with full identity management access",
+      "scope-references": [
+        "$XSAPPNAME.admin",
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "User",
+      "description": "Standard User Role",
+      "scope-references": [
+        "$XSAPPNAME.User"
+      ]
+    },
+    {
+      "name": "Auditor",
+      "description": "Auditor Role for read-only access to task completion evidence",
+      "scope-references": [
+        "$XSAPPNAME.Auditor"
+      ]
+    }
+  ],
+
+  "role-collections": [
+    {
+      "name": "CNMA_Proresolve_Admin",
+      "description": "8D Copilot admin: AI models, similarity criteria, step prompts, case library",
+      "role-template-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "CNMA_Proresolve_User",
+      "description": "8D Copilot user: read and create 8D reports",
+      "role-template-references": [
+        "$XSAPPNAME.User"
+      ]
+    },
+    {
+      "name": "CNMA_Proresolve_Auditor",
+      "description": "Read-only access to task completion evidence",
+      "role-template-references": [
+        "$XSAPPNAME.Auditor"
+      ]
+    }
+  ]
+}

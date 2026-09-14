@@ -1,0 +1,38 @@
+{
+  "//": [
+    "CHỈ dành cho chạy local.",
+    "",
+    "KHÔNG khai `db` ở file này. `.cdsrc.json` có độ ưu tiên CAO HƠN khối `cds`",
+    "trong package.json, và `cds watch` LUÔN bật kèm profile [development] — kể cả",
+    "khi gọi --profile hybrid (profiles = [\"hybrid\",\"development\"]). Mọi thứ khai ở",
+    "đây vì thế áp lên cả lượt chạy hybrid và có thể kéo DB về sai driver.",
+    "",
+    "DB là HANA ở mọi profile: xem package.json → cds.requires.db.",
+    "Credential local lấy từ .cdsrc-private.json (đã gitignore)."
+  ],
+  "requires": {
+    "auth": {
+      "[development]": {
+        "kind": "mocked",
+        "users": {
+          "admin": {
+            "password": "123",
+            "roles": [
+              "admin",
+              "Admin",
+              "authenticated-user"
+            ]
+          },
+          "developer": {
+            "password": "123",
+            "roles": [
+              "admin",
+              "Admin",
+              "authenticated-user"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
