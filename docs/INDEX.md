@@ -17,20 +17,15 @@
 |---|---|---|---|
 | `AI Requirements - 8D Copilot POC.md` | Requirements | **Normative** | What the AI must do, on what data, and the acceptance criteria. Retrieval weights §2 are the seeded defaults. |
 | `AI-RULES-8D-STEPS.md` | Requirements | 🔴 **MISSING on this branch** | R2.1 (D1), R2.2 (D2), §R4 acceptance tests 8–10. Cited as normative by the D1/D2 fix plan. See Part 3. |
-| `SAP-QM-CHAIN-ALIGNMENT-VERIFICATION.md` | Findings | **Promoted** → chain-alignment plan | Whether the screens and object model match the SAP QM chain. Business flow, fields per screen, integration gaps. Object-model conflict settled 2026-09-01 (Cloud). |
-| `PRECEDENT-RETRIEVAL-REVIEW.md` | Findings | In review — **AI track owner** | The similarity engine — criteria, weights, thresholds. Feeds D1, D3, D4, D5, D8. Out of scope for the chain-alignment plan, which only supplies `defectCodeGroup`. |
-| `CHAIN-ALIGNMENT-IMPLEMENTATION-PLAN.md` | Plan | **In build — frozen** | What gets built to align the app with the SAP QM chain: flow, screens, fields, integration. Retrieval tuning is explicitly out of scope. Do not edit — build progress lives in the verification log below. |
-| `CHAIN-ALIGNMENT-VERIFICATION.md` | Verification | Living log | Whether the chain-alignment plan was built, what deviated, and what is still owed. Append-only. **All five phases delivered — 1 ✅, 5 ✅, 2 ✅, 3 ✅, 4 ✅ — plus the three carry-overs closed in Entry 6 (S5 popup, S7 wording, inline defect edit), all 2026-09-02** (Entries 1–6). Entry 6 also settles where a per-case committed due date lives: `Reports.slaResponseDue`, two write paths, no new column — and records the measurement-provenance fix: editing a defect no longer resets `createdAt`/`createdBy` on its measurement rows. What remains is per-machine migrations, the HANA delta deploy, and two smoke-test rows to delete — listed at the end of each entry. |
-| `D1D2FIXPLAN - 11PM (1).md` | Plan | **In build — frozen** | The agreed D1/D2 + popup work. Do not edit while the team is implementing. |
-| `D1D2-FIXPLAN-VERIFICATION.md` | Verification | Living log | Whether the plan was built, and what the live runs showed. Append-only. |
+| `GRAPH-RETRIEVAL-AND-RERANK.vi.md` | Architecture / Superpower | Living | Core flagship: SAP HANA Cloud Graph + openCypher & 2-stage LLM Re-ranking. |
+| `RERANK-PRECEDENT-RETRIEVAL.md` | Architecture / Superpower | Living | Stage-2 LLM Re-rank pass spec (D4 Root Cause & D5 Corrective Actions). |
 | `8D-COPILOT-E2E-GUIDE.md` | Guide | Living | Business context, AI architecture, E2E test walkthrough (VN). |
 | `8D-DISCIPLINE-PIPELINE-AND-CREATE-DEFECT-GUIDE.md` | Guide | Living | The 5-tab step config pipeline and the Create Defect module (VN). |
-| `8D-TESTING-PLAN-AND-VALIDATION-MATRIX.md` | Guide | Living | Test scenarios and the validation matrix (VN). |
-| `AI-SETTINGS-D1-CONFIGURATION.md` | Guide | Living | The AI Settings step-prompt editor screens. |
-| `8d-step-prompts.md` | Generated | **Do not edit** | Snapshot of the live prompts. Regenerate: `node scripts/export-step-prompts.mjs` |
-| `REFACTOR-PLAN.md` | Plan | 🔴 **MISSING on this branch** | Cited once by the fix plan. Recover, then decide if still live. |
-| `*.html` (2 mockups) | Reference | Unclassified | Flagship mockup + E2E pipeline test plan. Decide: keep as guide, or archive. |
-| `_to_delete_probe` | — | Junk | Empty 0-byte file, tracked in git. Delete. |
+| `8D-TESTING-PLAN-AND-VALIDATION-MATRIX.md` | Guide / Test | Living | Test scenarios and the validation matrix (VN). |
+| `8D_D*.xlsx` (3 files) | Test Data | Living | Test cases and live verified test cases for D2 / D4. |
+| `8d-step-prompts.md` | Generated | **Do not edit** | Snapshot of the live prompts. Regenerate: `npm run export:prompts` |
+| `*.html` (2 mockups) | Reference / UI | Active | Flagship mockup + E2E pipeline test plan. |
+| `archive/` (9 files) | Archive | **Completed / Superseded** | Completed plans & verification logs (D1D2, Chain-alignment, old similarity review, etc.). See `archive/README.md`. |
 
 ### Which document wins
 
